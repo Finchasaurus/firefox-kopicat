@@ -18,16 +18,37 @@ const accents = [
     "lavender",
 ];
 
+const overrides = {
+    "text": "#fcfcfa",
+    "surface2": "#535763",
+    "surface1": "#3a3d4b",
+    "surface0": "#30303b",
+    "base": "#202027",
+    "mantle": "#1c1d22",
+    "crust": "#171719",
+    "red": "#ff657a",
+    "maroon": "#F29BA7",
+    "peach": "#ff9b5e",
+    "yellow": "#eccc81",
+    "green": "#a8be81",
+    "teal": "#9cd1bb",
+    "sky": "#A6C9E5",
+    "sapphire": "#86AACC",
+    "blue": "#5d81ab",
+    "lavender": "#66729C",
+    "mauve": "#b18eab"
+}
+
 const jsonCodec = JsonUrl("lzma");
 
 const hexToRgb = (hex) => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
         ? {
-              r: parseInt(result[1], 16),
-              g: parseInt(result[2], 16),
-              b: parseInt(result[3], 16),
-          }
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16),
+        }
         : null;
 };
 
@@ -42,7 +63,7 @@ const capitalize = (s) => {
         const lib = {};
 
         Object.keys(variants[flavour]).forEach((colour) => {
-            const hex = variants[flavour][colour]["hex"];
+            const hex = overrides[colour] ?? variants[flavour][colour]["hex"];
             const { r, g, b } = hexToRgb(hex);
             lib[colour] = {
                 r,

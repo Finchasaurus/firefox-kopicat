@@ -10,7 +10,8 @@
         "jszip": "^3.10.1"
     },
     "scripts": {
-        "generate": "node ./main.js"
+        "generate": "node ./main.js",
+        "theme": "npm run generate > theme.md"
     },
     "type": "module"
 }
